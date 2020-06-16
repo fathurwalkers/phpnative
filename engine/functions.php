@@ -52,3 +52,25 @@ function hapus($produk_id)
     mysqli_query($conn, "DELETE FROM produk WHERE produk_id = '$produk_id'");
     return mysqli_affected_rows($conn);
 }
+
+function update($data)
+{
+    global $conn;
+    $produk_id = $data["produk_id"];
+    $namaproduk = htmlspecialchars($data["namaproduk"]);
+    $namapenjual = htmlspecialchars($data["namapenjual"]);
+    $harga = htmlspecialchars($data["harga"]);
+    $toko = htmlspecialchars($data["toko"]);
+    $gambar = htmlspecialchars($data["gambar"]);
+
+    $query = "UPDATE produk SET 
+                namaproduk = '$namaproduk', 
+                namapenjual = '$namapenjual', 
+                harga = '$harga', 
+                gambar = '$gambar' 
+                WHERE produk_id = '$produk_id'";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}

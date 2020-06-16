@@ -112,7 +112,7 @@ $products = query("SELECT * FROM produk");
                             <?= $row["toko"]; ?>
                         </td>
                         <td>
-                            <a href="engine/edit.php?produk_id=<?= $row["produk_id"]; ?>" class="btn btn-info">Edit </a>
+                            <a href="edit.php?produk_id=<?= $row["produk_id"]; ?>" class="btn btn-info">Edit </a>
                             <a href="engine/hapus.php?produk_id=<?= $row["produk_id"]; ?>" class="btn btn-warning">Hapus </a>
                         </td>
                     </tr>

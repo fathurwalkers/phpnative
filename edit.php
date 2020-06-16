@@ -1,18 +1,21 @@
 <html lang="en">
 <?php
 require "engine/functions.php";
+$produk_id = $_GET["produk_id"];
+
+$editproduk = query("SELECT * FROM produk WHERE produk_id = '$produk_id'")[0];
 
 if (isset($_POST["submit"])) {
 
-    if (tambah($_POST) > 0) {
+    if (update($_POST) > 0) {
         echo "<script>
-                alert('DATA BERHASIL DITAMBAHKAN!'); 
+                alert('DATA BERHASIL DIUBAH !'); 
                 document.location.href = 'index.php';   
             </script>";
     } else {
         echo "<script>
-                alert('DATA GAGAL DITAMBAHKAN!'); 
-                document.location.href = 'create.php';   
+                alert('DATA GAGAL DIUBAH !'); 
+                document.location.href = 'edit.php';   
             </script>";
     }
 }
@@ -21,7 +24,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Produk</title>
+    <title>Update Data Produk</title>
     <style>
         @import url(https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700);
 
@@ -157,31 +160,32 @@ if (isset($_POST["submit"])) {
 <br>
 
 <center>
-    <h1>Tambah Data Produk</h1>
+    <h1>Update Data Produk</h1>
 </center>
 
 <body>
     <form action="" method="post">
+        <input type="hidden" name="produk_id" value="<?= $editproduk["produk_id"]; ?>">
         <fieldset>
             <div>
                 <label for="produk" class="mid">Nama Produk :</label>
-                <input type="text" name="namaproduk" id="produk" tabindex="1" autofocus required>
+                <input type="text" name="namaproduk" id="produk" tabindex="1" autofocus required value="<?= $editproduk["namaproduk"]; ?>">
             </div>
             <div>
                 <label for="penjual" class="mid">Nama Penjual :</label>
-                <input type="text" name="namapenjual" id="penjual" tabindex="1" required>
+                <input type="text" name="namapenjual" id="penjual" tabindex="1" required value="<?= $editproduk["namapenjual"]; ?>">
             </div>
             <div>
                 <label for="hargaproduk" class="mid">Harga :</label>
-                <input type="number" name="harga" id="hargaproduk" tabindex="1" required>
+                <input type="number" name="harga" id="hargaproduk" tabindex="1" required value="<?= $editproduk["harga"]; ?>">
             </div>
             <div>
                 <label for="namatoko" class="mid">Nama Toko :</label>
-                <input type="text" name="toko" id="namatoko" tabindex="1" required>
+                <input type="text" name="toko" id="namatoko" tabindex="1" required value="<?= $editproduk["toko"]; ?>">
             </div>
             <div>
                 <label for="namagambar" class="mid">Gambar :</label>
-                <input type="text" name="gambar" id="namagambar" tabindex="1" required>
+                <input type="text" name="gambar" id="namagambar" tabindex="1" required value="<?= $editproduk["gambar"]; ?>">
             </div>
             <div>
                 <button type="submit" class="submit" name="submit">Tambah Data</button>
