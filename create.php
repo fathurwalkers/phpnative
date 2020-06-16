@@ -161,7 +161,7 @@ if (isset($_POST["submit"])) {
 </center>
 
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <fieldset>
             <div>
                 <label for="produk" class="mid">Nama Produk :</label>
@@ -181,7 +181,7 @@ if (isset($_POST["submit"])) {
             </div>
             <div>
                 <label for="namagambar" class="mid">Gambar :</label>
-                <input type="text" name="gambar" id="namagambar" tabindex="1" required>
+                <input type="file" name="gambar" id="namagambar" tabindex="1" required>
             </div>
             <div>
                 <button type="submit" class="submit" name="submit">Tambah Data</button>

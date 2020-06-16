@@ -36,13 +36,61 @@ function tambah($data)
     $namapenjual = htmlspecialchars($data["namapenjual"]);
     $harga = htmlspecialchars($data["harga"]);
     $toko = htmlspecialchars($data["toko"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+
+    $gambar = upload();
+
+    if (!$gambar) {
+        return false;
+    }
 
     $query = "INSERT INTO produk VALUES (null, '$namaproduk', '$namapenjual', '$harga', '$toko', '$gambar')";
 
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+
+function upload()
+{
+    $namafile = $_FILES['gambar']['name'];
+    $ukuranfile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpname = $_FILES['gambar']['tmp_name'];
+
+    if ($error === 4) {
+        echo "<script>
+                alert('SILAHKAN PILIH GAMBAR YANG VALID !');  
+            </script>";
+
+        return false;
+    }
+
+    $gambarvalid = ['jpg', 'png', 'jpeg'];
+    $ekstensivalid = explode('.', $namafile);
+    $ekstensivalid = strtolower(end($ekstensivalid));
+
+    if (!in_array($ekstensivalid, $gambarvalid)) {
+        echo "<script>
+                alert('TIDAK DAPAT MENGUPLOAD FILE SELAIN GAMBAR !');  
+            </script>";
+        return false;
+    }
+
+    if ($ukuranfile > 1000000) {
+        echo "<script>
+                alert('UKURAN GAMBAR TERLALU BESAR ! MAX 1MB');  
+            </script>";
+        return false;
+    }
+
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensivalid;
+
+    move_uploaded_file($tmpname, 'assets/img/' . $namafilebaru);
+
+    return $namafilebaru;
 }
 
 
@@ -53,6 +101,7 @@ function hapus($produk_id)
     return mysqli_affected_rows($conn);
 }
 
+
 function update($data)
 {
     global $conn;
@@ -61,16 +110,28 @@ function update($data)
     $namapenjual = htmlspecialchars($data["namapenjual"]);
     $harga = htmlspecialchars($data["harga"]);
     $toko = htmlspecialchars($data["toko"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+    $gambar = upload();
 
     $query = "UPDATE produk SET 
                 namaproduk = '$namaproduk', 
                 namapenjual = '$namapenjual', 
                 harga = '$harga', 
+                toko = '$toko', 
                 gambar = '$gambar' 
                 WHERE produk_id = '$produk_id'";
 
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+
+function cari($keyword)
+{
+    $query = "SELECT * FROM produk WHERE namaproduk LIKE '%$keyword%' OR 
+                                        namapenjual LIKE '%$keyword%' OR 
+                                        harga LIKE '%$keyword%' OR 
+                                        toko LIKE '%$keyword%'";
+
+    return query($query);
 }

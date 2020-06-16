@@ -10,6 +10,10 @@ require "engine/functions.php";
 // Nantinya kita bisa memakai Variable $products ini untuk mengeluarkan / menampilkan data pada isi dari variable tsb
 // yang berupa Array Associative 
 $products = query("SELECT * FROM produk");
+
+if (isset($_POST["cari"])) {
+    $products = cari($_POST["keyword"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +45,7 @@ $products = query("SELECT * FROM produk");
                             <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tambah Produk</a>
+                            <a class="nav-link" href="create.php">Tambah Produk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Profile</a>
@@ -50,14 +54,6 @@ $products = query("SELECT * FROM produk");
                             <a class="nav-link" href="#">Logout<i class="ion-ios-arrow-down"></i></a>
                         </li>
                     </ul>
-                    <form class="form-inline">
-                        <div class="input-group search-box">
-                            <input type="text" class="form-control" placeholder="Cari produk anda..." aria-label="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button"><i class="ion-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
                 </div>
             </div>
 
@@ -70,6 +66,12 @@ $products = query("SELECT * FROM produk");
         <h1>
             Informasi Produk
         </h1>
+        <center>
+            <form action="" method="post">
+                <input type="text" name="keyword" placeholder="Cari produk anda..." autofocus autocomplete="off">
+                <button type="submit" name="cari">Cari</button>
+            </form>
+        </center>
         <br>
         <table class="rwd-table">
             <thead>
@@ -88,6 +90,9 @@ $products = query("SELECT * FROM produk");
                     </th>
                     <th>
                         Distributor
+                    </th>
+                    <th>
+                        Gambar
                     </th>
                     <th>
                         Actions
@@ -119,6 +124,9 @@ $products = query("SELECT * FROM produk");
                         </td>
                         <td>
                             <?= $row["toko"]; ?>
+                        </td>
+                        <td>
+                            <img src="assets/img/<?= $row["gambar"]; ?>" width="65px">
                         </td>
                         <td>
                             <a href="edit.php?produk_id=<?= $row["produk_id"]; ?>" class="btn btn-info">Edit </a>

@@ -201,12 +201,18 @@ h3:after {
   line-height: 36px;
 } */
 
+.navbar-brand {
+  margin-right: 2.9rem;
+}
+
 .navbar-survival101 .navbar-brand img {
   vertical-align: baseline;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
   color: #fff;
+  text-align: center;
+  margin-left: 4rem;
 }
 
 .search-box {

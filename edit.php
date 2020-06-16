@@ -3,7 +3,7 @@
 require "engine/functions.php";
 $produk_id = $_GET["produk_id"];
 
-$editproduk = query("SELECT * FROM produk WHERE produk_id = '$produk_id'")[0];
+$editproduk = query("SELECT * FROM produk WHERE produk_id = $produk_id")[0];
 
 if (isset($_POST["submit"])) {
 
@@ -164,7 +164,7 @@ if (isset($_POST["submit"])) {
 </center>
 
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="produk_id" value="<?= $editproduk["produk_id"]; ?>">
         <fieldset>
             <div>
@@ -185,7 +185,7 @@ if (isset($_POST["submit"])) {
             </div>
             <div>
                 <label for="namagambar" class="mid">Gambar :</label>
-                <input type="text" name="gambar" id="namagambar" tabindex="1" required value="<?= $editproduk["gambar"]; ?>">
+                <input type="file" name="gambar" id="namagambar" tabindex="1" required value="<?= $editproduk["gambar"]; ?>">
             </div>
             <div>
                 <button type="submit" class="submit" name="submit">Tambah Data</button>
