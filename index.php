@@ -75,10 +75,10 @@ $products = query("SELECT * FROM produk");
                         Nama Penjual
                     </th>
                     <th>
-                        Distributor
+                        Harga
                     </th>
                     <th>
-                        Gambar
+                        Distributor
                     </th>
                     <th>
                         Actions
