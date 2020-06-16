@@ -20,48 +20,57 @@ $products = query("SELECT * FROM produk");
     <title>Informasi Distributor Produk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
-    <style>
-    </style>
+    <link rel="stylesheet" type="text/javascript" href="assets/index.js">
 </head>
 
 <body>
+
     <header>
-        <nav class="navbar navbar-light navbar-expand-lg py-3 px-4">
-            <a href="#" class="navbar-brand">
-                COFFEE LOVE
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span> </span>
-                <span> </span>
-                <span> </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto text-right">
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a href="#" class="nav-link">
-                            COFFEES
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a href="#" class="nav-link">
-                            ABOUT
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a href="#" class="nav-link">
-                            CONTACT US
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a href="#" class="nav-link">
-                            EQUIPMENT
-                        </a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/tbrheader.png" alt="Techno Buton Raya" width="200px">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tambah Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Logout<i class="ion-ios-arrow-down"></i></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline">
+                        <div class="input-group search-box">
+                            <input type="text" class="form-control" placeholder="Cari produk anda..." aria-label="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button"><i class="ion-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
             </div>
+
         </nav>
+
     </header>
+    <br>
+    <br>
     <main>
+        <h1>
+            Informasi Produk
+        </h1>
+        <br>
         <table class="rwd-table">
             <thead>
                 <tr>
@@ -124,6 +133,7 @@ $products = query("SELECT * FROM produk");
         <br>
         <br>
     </main>
+    <script src="assets/index.js"></script>
 </body>
 
 </html>
