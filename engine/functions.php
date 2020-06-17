@@ -145,3 +145,39 @@ function cari($keyword)
 
     return query($query);
 }
+
+
+// Membuat fungsi untuk memproses Halaman Registrasi 
+function registrasi($data)
+{
+
+    global $conn;
+
+    $username = strtolower(stripslashes($data["username"]));
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('Username sudah pernah terdaftar, silahkan gunakan username lain');  
+            </script>";
+        return false;
+    }
+
+    if ($password !== $password2) {
+        echo "<script>
+                alert('Konfirmasi Password tidak sesuai, Silahkan sama kan dengan password anda');  
+            </script>";
+        return false;
+    }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+
+
+    mysqli_query($conn, "INSERT INTO user VALUES(null, '$username', '$password')");
+
+    return mysqli_affected_rows($conn);
+}
