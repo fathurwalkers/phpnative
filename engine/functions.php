@@ -29,6 +29,8 @@ function query($query)
 }
 
 
+
+// Fungsi untuk menambah / Create data baru pada Tabel Produk 
 function tambah($data)
 {
     global $conn;
@@ -51,6 +53,8 @@ function tambah($data)
 }
 
 
+
+// Fungsi untuk menangani File Upload / Gambar pada Aplikasi ini 
 function upload()
 {
     $namafile = $_FILES['gambar']['name'];
@@ -94,6 +98,8 @@ function upload()
 }
 
 
+
+// Fungsi untuk menghapus sebuah Row berdasarkan ID yang di pilih 
 function hapus($produk_id)
 {
     global $conn;
@@ -102,6 +108,8 @@ function hapus($produk_id)
 }
 
 
+
+// Fungsi untuk menangani Proses Update / Mengganti data ke Data Baru 
 function update($data)
 {
     global $conn;
@@ -126,6 +134,8 @@ function update($data)
 }
 
 
+
+// Fungsi untuk menangani Proses Pencarian 
 function cari($keyword)
 {
     $query = "SELECT * FROM produk WHERE namaproduk LIKE '%$keyword%' OR 
