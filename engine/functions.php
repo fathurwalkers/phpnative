@@ -166,6 +166,13 @@ function registrasi($data)
         return false;
     }
 
+    if (trim($username)) {
+        echo "<script>
+                alert('username tidak dapat menggunakan spasi, contoh technobutonraya');  
+            </script>";
+        return false;
+    }
+
     if ($password !== $password2) {
         echo "<script>
                 alert('Konfirmasi Password tidak sesuai, Silahkan sama kan dengan password anda');  

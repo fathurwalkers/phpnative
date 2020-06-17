@@ -167,21 +167,21 @@ if (isset($_POST["register"])) {
             <form action="" class="form" method="post">
                 <div class="input-group">
                     <label for="username" class="label">Username</label>
-                    <input name="username" type="text" class="input" placeholder="Masukkan username baru anda.." autocomplete="off">
+                    <input name="username" type="text" class="input" placeholder="Masukkan username baru anda.." autocomplete="off" required>
                 </div>
 
                 <div class="input-group">
                     <div class="label-flex">
                         <label for="username" class="label">Password</label>
                     </div>
-                    <input name="password" type="password" class="input" placeholder="password baru anda..">
+                    <input name="password" type="password" class="input" placeholder="password baru anda.." required>
                 </div>
 
                 <div class="input-group">
                     <div class="label-flex">
                         <label for="username" class="label">Konfirmasi Password</label>
                     </div>
-                    <input name="password2" type="password" class="input" placeholder="password baru anda..">
+                    <input name="password2" type="password" class="input" placeholder="password baru anda.." required>
                 </div>
 
                 <button type="submit" name="register" class="login-btn">Daftar Sekarang</button>
